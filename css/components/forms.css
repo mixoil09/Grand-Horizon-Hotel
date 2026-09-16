@@ -1,12 +1,12 @@
 /* ============================================================
    css/components/forms.css
-   Базовые стили форм и инпутов
-   Автор: deepseek
-   Подключать ПОСЛЕ main.css
+   Base form and input styles
+   Author: ту нф
+   Connect AFTER main.css
    ============================================================ */
 
 /* ----------------------------------------------------------
-   1. ГРУППА ПОЛЯ (label + input + error)
+   1. FORM GROUP (label + input + error)
    ---------------------------------------------------------- */
 
 .form-group {
@@ -29,21 +29,21 @@
   line-height: 1.4;
 }
 
-/* Обязательное поле — звёздочка */
+/* Required field — asterisk */
 .form-label--required::after {
   content: " *";
   color: var(--color-error);
   font-weight: var(--fw-bold);
 }
 
-/* Подсказка под полем */
+/* Hint below the field */
 .form-hint {
   font-size: var(--fs-xs);
   color: var(--color-text-muted);
   line-height: 1.4;
 }
 
-/* Сообщение об ошибке под полем */
+/* Error message below the field */
 .form-error {
   font-size: var(--fs-xs);
   color: var(--color-error);
@@ -53,7 +53,7 @@
 
 
 /* ----------------------------------------------------------
-   2. БАЗОВЫЕ ИНПУТЫ (text, email, tel, date)
+   2. BASE INPUTS (text, email, tel, date)
    ---------------------------------------------------------- */
 
 .form-input,
@@ -83,14 +83,14 @@
   opacity: 1;
 }
 
-/* Hover */
+/* Hover state */
 .form-input:hover:not(:disabled):not(:focus),
 .form-textarea:hover:not(:disabled):not(:focus),
 .form-select:hover:not(:disabled):not(:focus) {
   border-color: var(--color-border-strong);
 }
 
-/* Focus — основной акцент */
+/* Focus — primary accent */
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
@@ -99,7 +99,7 @@
   box-shadow: 0 0 0 3px var(--color-focus-ring);
 }
 
-/* Disabled */
+/* Disabled state */
 .form-input:disabled,
 .form-textarea:disabled,
 .form-select:disabled {
@@ -114,14 +114,14 @@
   color: var(--color-text-muted);
 }
 
-/* Readonly */
+/* Readonly state */
 .form-input[readonly],
 .form-textarea[readonly] {
   background-color: var(--color-bg-soft);
   cursor: default;
 }
 
-/* Состояние ошибки */
+/* Error state */
 .form-input.error,
 .form-textarea.error,
 .form-select.error {
@@ -135,7 +135,7 @@
   box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.2);
 }
 
-/* Состояние успеха */
+/* Success state */
 .form-input.success,
 .form-textarea.success,
 .form-select.success {
@@ -155,7 +155,7 @@
 
 
 /* ----------------------------------------------------------
-   4. SELECT — кастомная стрелка
+   4. SELECT — custom arrow
    ---------------------------------------------------------- */
 
 .form-select {
@@ -171,17 +171,17 @@
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3e%3cpath fill='none' stroke='%23a9713c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3e%3c/svg%3e");
 }
 
-/* Убираем дефолтную стрелку в IE/Edge */
+/* Remove default arrow in IE/Edge */
 .form-select::-ms-expand {
   display: none;
 }
 
 
 /* ----------------------------------------------------------
-   5. ЧЕКБОКС и РАДИО — кастомные
+   5. CHECKBOX and RADIO — custom styling
    ---------------------------------------------------------- */
 
-/* Обёртка для чекбокса/радио с меткой */
+/* Wrapper for checkbox/radio with label */
 .form-check {
   display: flex;
   align-items: flex-start;
@@ -195,7 +195,7 @@
   margin-bottom: 0;
 }
 
-/* Скрываем нативный input, но оставляем доступным */
+/* Hide native input but keep it accessible */
 .form-check__input {
   position: absolute;
   width: 1px;
@@ -208,7 +208,7 @@
   border: 0;
 }
 
-/* Кастомный квадрат/круг */
+/* Custom box */
 .form-check__box {
   flex-shrink: 0;
   width: 20px;
@@ -222,12 +222,12 @@
   margin-top: 2px;
 }
 
-/* Чекбокс — квадрат со скруглением */
+/* Checkbox — rounded square */
 .form-check__box--checkbox {
   border-radius: var(--radius-xs);
 }
 
-/* Радио — круг */
+/* Radio — circle */
 .form-check__box--radio {
   border-radius: var(--radius-full);
 }
@@ -242,7 +242,7 @@
   box-shadow: 0 0 0 3px var(--color-focus-ring);
 }
 
-/* Checked — чекбокс (галочка) */
+/* Checked — checkbox (checkmark) */
 .form-check__input:checked + .form-check__box--checkbox {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
@@ -260,7 +260,7 @@
   transform: rotate(45deg);
 }
 
-/* Checked — радио (точка) */
+/* Checked — radio (dot) */
 .form-check__input:checked + .form-check__box--radio {
   border-color: var(--color-primary);
 }
@@ -293,14 +293,14 @@
   cursor: not-allowed;
 }
 
-/* Текст метки */
+/* Label text */
 .form-check__label {
   font-size: var(--fs-sm);
   line-height: 1.5;
   color: var(--color-text);
 }
 
-/* Ссылка внутри метки */
+/* Link inside label */
 .form-check__label a {
   color: var(--color-primary);
   text-decoration: underline;
@@ -308,7 +308,7 @@
 
 
 /* ----------------------------------------------------------
-   6. ГРУППА РАДИО/ЧЕКБОКСОВ (fieldset)
+   6. RADIO/CHECKBOX GROUP (fieldset)
    ---------------------------------------------------------- */
 
 .form-fieldset {
@@ -331,7 +331,7 @@
   gap: var(--space-2);
 }
 
-/* Горизонтальное расположение */
+/* Horizontal layout */
 .form-checks--inline {
   flex-direction: row;
   flex-wrap: wrap;
@@ -340,7 +340,7 @@
 
 
 /* ----------------------------------------------------------
-   7. ПОДСКАЗКА ДЛЯ ПОЛЯ С ИКОНКОЙ (по желанию)
+   7. INPUT WITH ICON (optional)
    ---------------------------------------------------------- */
 
 .form-input-wrapper {
@@ -364,7 +364,7 @@
 
 
 /* ----------------------------------------------------------
-   8. СЕТКА ФОРМЫ (2 колонки на десктопе)
+   8. FORM GRID (2 columns on desktop)
    ---------------------------------------------------------- */
 
 .form-grid {
@@ -385,7 +385,7 @@
 
 
 /* ----------------------------------------------------------
-   9. ПЛЕЙСХОЛДЕР-ОБЁРТКА ДЛЯ ФОРМЫ (карточка)
+   9. FORM CARD WRAPPER
    ---------------------------------------------------------- */
 
 .form-card {
@@ -404,7 +404,7 @@
 
 
 /* ----------------------------------------------------------
-   10. БЛОК ОШИБКИ НА УРОВНЕ ФОРМЫ
+   10. FORM-LEVEL ALERT
    ---------------------------------------------------------- */
 
 .form-alert {
