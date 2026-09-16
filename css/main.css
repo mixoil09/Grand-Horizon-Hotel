@@ -461,3 +461,96 @@ img {
     color: #555;
   }
 }
+/* =========================================================
+   FOOTER (автор: Тихоньких М.Д., задача №24)
+   ========================================================= */
+
+/* Прижимаем футер к низу страницы */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Основной блок футера */
+.footer {
+    flex-shrink: 0;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 40px 20px 20px;
+    font-family: sans-serif;
+}
+
+.footer__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+.footer__title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.footer__address,
+.footer__phone,
+.footer__email {
+    margin: 8px 0;
+    font-size: 1rem;
+}
+
+.footer__subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.footer__social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer__social-link {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer__social-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.footer__copyright {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #bdc3c7;
+    text-align: center;
+}
+
+/* Адаптив: на десктопе выстраиваем в ряд */
+@media (min-width: 768px) {
+    .footer__container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer__social-links {
+        justify-content: flex-start;
+    }
+}
