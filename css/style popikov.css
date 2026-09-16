@@ -1,0 +1,91 @@
+/* Основные стили страницы */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+    margin: 0;
+}
+
+/* Секция отзывов */
+.reviews {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Контейнер слайдера */
+.slider-container {
+    position: relative;
+    min-height: 200px; /* Чтобы кнопки не прыгали */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Карточка отзыва */
+.review-card {
+    display: none; /* Скрываем все карточки по умолчанию */
+    padding: 20px;
+    animation: fade 0.5s;
+}
+
+/* Активная карточка */
+.review-card.active {
+    display: block; /* Показываем только активную */
+}
+
+/* Имя гостя */
+.guest-name {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Текст отзыва */
+.review-text {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Звезды */
+.stars {
+    color: #ffc107;
+    font-size: 1.5em;
+}
+
+/* Блок с кнопками */
+.controls {
+    margin-top: 20px;
+}
+
+/* Стили кнопок */
+.controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+/* Эффект наведения на кнопку */
+.controls button:hover {
+    background-color: #0056b3;
+}
+
+/* Анимация появления */
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
