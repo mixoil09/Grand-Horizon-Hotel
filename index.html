@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Слайдер отзывов</title>
+    <!-- Подключаем внешний CSS файл -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+    <section class="reviews">
+        <h2>Отзывы гостей</h2>
+        
+        <div class="slider-container">
+            <!-- Карточка 1 -->
+            <div class="review-card active">
+                <div class="guest-name">Артём Попиков</div>
+                <div class="review-text">Отличный сервис! Всё понравилось, обязательно вернусь ещё.</div>
+                <div class="stars">★★★★★</div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="review-card">
+                <div class="guest-name">Иван Иванов</div>
+                <div class="review-text">Хорошее место, но немного шумно. В целом, рекомендую.</div>
+                <div class="stars">★★★★☆</div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="review-card">
+                <div class="guest-name">Мария Петрова</div>
+                <div class="review-text">Уютная атмосфера и вежливый персонал. Спасибо за отдых!</div>
+                <div class="stars">★★★★★</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="prevBtn">← Влево</button>
+            <button id="nextBtn">Вправо →</button>
+        </div>
+    </section>
+
+    <!-- Подключаем JS файл -->
+    <script src="js/slider.js"></script>
+</body>
+</html>
