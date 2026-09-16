@@ -11,15 +11,18 @@
 <body>
     <form id="calculator">
         <h3> Калькулятор стоимости </h3>
-        <label for arrive> Дата заезда </label>
+        <label for="arrive"> Дата заезда </label>
         <input type="date" id="arrive">
-        <label for leave> Дата выезда </label>
+        <label for="leave"> Дата выезда </label>
         <input type="date" id="leave">
         <label for="guestnumber"> Количество гостей </label>
         <input type="number" id="guestnumber" min="1" max="5">
         <input type="radio" name="roomtype" id="standard" value="standard">
+        <label for="standard"> Стандарт </label>
         <input type="radio" name="roomtype" id="comfort" value="comfort">
+        <label for="comfort"> Комфорт </label>
         <input type="radio" name="roomtype" id="lux" value="lux">
+        <label for="lux"> Люкс </label>
         <button id="calcbutton"> Рассчитать </button>
         <div id="resultblock" hidden>
             <label> Итоговая цена </label>
