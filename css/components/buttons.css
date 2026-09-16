@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel Header</title>
-  
-  <style>
+
     * {
       margin: 0;
       padding: 0;
@@ -131,26 +124,4 @@
       transform: translateY(-1px);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
-  </style>
-</head>
-<body>
-
-  <header class="header">
-    <div class="container">
-      <a href="/" class="logo">Hotel</a>
-      
-      <nav class="nav">
-        <a href="index.html" class="nav__link">Главная</a>
-        <a href="rooms.html" class="nav__link">Номера</a>
-        <a href="booking.html" class="nav__link">Бронирование</a>
-      </nav>
-      
-      <div class="buttons">
-        <button class="btn btn--primary">Забронировать</button>
-        <button class="btn btn--secondary">Рассчитать</button>
-      </div>
-    </div>
-  </header>
-
-</body>
-</html>
+ 
