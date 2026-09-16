@@ -1,87 +1,87 @@
 /* ============================================================
    css/variables.css
-   CSS-переменные проекта «Отель»
-   Автор: Дипсик, ес чё это самое, мяучьте
-   Подключать ПОСЛЕ reset.css и ДО main.css
+   CSS variables for the "Hotel" project
+   Author: DeepSeek, by the way — meow, purr
+   Connect AFTER reset.css and BEFORE main.css
    ============================================================ */
 
 :root {
 
   /* ----------------------------------------------------------
-     1. ЦВЕТА — фирменная палитра
+     1. COLORS — brand palette
      ---------------------------------------------------------- */
 
-  /* Основной (акцентный) цвет — тёплый золотисто-коричневый */
+  /* Primary (accent) color — warm golden-brown */
   --color-primary:        #a9713c;
   --color-primary-hover:  #8f5d2e;
   --color-primary-active: #774c25;
 
-  /* Вторичный — глубокий тёмно-синий (для контраста) */
+  /* Secondary — deep dark blue (for contrast) */
   --color-secondary:      #1f3a52;
   --color-secondary-hover:#16293b;
 
-  /* Нейтральная палитра (текст, фоны, границы) */
-  --color-text:           #1a1a1a;   /* основной текст */
-  --color-text-muted:     #6b6b6b;   /* второстепенный */
-  --color-text-inverse:   #ffffff;   /* на тёмном фоне */
+  /* Neutral palette (text, backgrounds, borders) */
+  --color-text:           #1a1a1a;   /* main text */
+  --color-text-muted:     #6b6b6b;   /* secondary text */
+  --color-text-inverse:   #ffffff;   /* on dark background */
 
-  --color-bg:             #ffffff;   /* основной фон */
-  --color-bg-soft:        #f7f4ef;   /* тёплый светлый фон (секции) */
-  --color-bg-dark:        #1f3a52;   /* тёмный фон */
+  --color-bg:             #ffffff;   /* main background */
+  --color-bg-soft:        #f7f4ef;   /* warm light background (sections) */
+  --color-bg-dark:        #1f3a52;   /* dark background */
 
-  --color-border:         #e2ddd5;   /* границы, разделители */
+  --color-border:         #e2ddd5;   /* borders, dividers */
   --color-border-strong:  #c9c1b5;
 
-  /* Семантические цвета */
+  /* Semantic colors */
   --color-success:        #2e7d32;
   --color-warning:        #ed6c02;
-  --color-error:          #d32f2f;   /* для класса .error в формах */
+  --color-error:          #d32f2f;   /* for the .error class in forms */
   --color-error-bg:       #fdecea;
   --color-info:           #0288d1;
 
-  /* Интерактивные состояния */
-  --color-focus-ring:     #a9713c80;  /* полупрозрачный primary для :focus */
-  --color-overlay:        rgba(0, 0, 0, 0.5); /* затемнение под модалки */
+  /* Interactive states */
+  --color-focus-ring:     #a9713c80;  /* semi-transparent primary for :focus */
+  --color-overlay:        rgba(0, 0, 0, 0.5); /* dim overlay for modals */
 
 
   /* ----------------------------------------------------------
-     2. ТИПОГРАФИКА
+     2. TYPOGRAPHY
      ---------------------------------------------------------- */
 
-  /* Шрифтовые семейства */
+  /* Font families */
   --font-heading: "Playfair Display", "Georgia", serif;
   --font-body:    "Inter", "Segoe UI", Roboto, system-ui, sans-serif;
   --font-mono:    "JetBrains Mono", "Courier New", monospace;
 
-  /* Размеры шрифта (модульная шкала ~1.25) */
-  --fs-xs:   0.75rem;   /* 12px — подписи, сноски */
-  --fs-sm:   0.875rem;  /* 14px — мелкий текст */
-  --fs-base: 1rem;      /* 16px — базовый */
-  --fs-md:   1.125rem;  /* 18px — крупный текст */
+  /* Font sizes (modular scale ~1.25) */
+  --fs-xs:   0.75rem;   /* 12px — captions, footnotes */
+  --fs-sm:   0.875rem;  /* 14px — small text */
+  --fs-base: 1rem;      /* 16px — base */
+  --fs-md:   1.125rem;  /* 18px — large text */
   --fs-lg:   1.5rem;    /* 24px — H3 */
   --fs-xl:   2rem;      /* 32px — H2 */
   --fs-2xl:  2.5rem;    /* 40px — H1 */
-  --fs-3xl:  3.5rem;    /* 56px — Hero-заголовок */
+  --fs-3xl:  3.5rem;    /* 56px — Hero heading */
 
-  /* Насыщенность */
+  /* Font weights */
   --fw-regular:  400;
   --fw-medium:   500;
   --fw-semibold: 600;
   --fw-bold:     700;
 
-  /* Межстрочный интервал */
-  --lh-tight:   1.2;   /* для заголовков */
-  --lh-normal:  1.5;   /* для основного текста */
-  --lh-loose:   1.75;  /* для длинных абзацев */
+  /* Line heights */
+  --lh-tight:   1.2;   /* for headings */
+  --lh-normal:  1.5;   /* for body text */
+  --lh-loose:   1.75;  /* for long paragraphs */
 
-  /* Межбуквенное расстояние */
+  /* Letter spacing */
   --ls-tight:  -0.02em;
   --ls-normal: 0;
-  --ls-wide:   0.05em;  /* для кнопок/капса */
+  --ls-wide:   0.05em;  /* for buttons/uppercase */
 
 
   /* ----------------------------------------------------------
-     3. ОТСТУПЫ (spacing scale, шаг 4px)
+     3. SPACING (scale, step 4px)
      ---------------------------------------------------------- */
 
   --space-1:  0.25rem;  /* 4px  */
@@ -97,30 +97,30 @@
 
 
   /* ----------------------------------------------------------
-     4. РАЗМЕРЫ И ШИРИНА КОНТЕЙНЕРА
+     4. SIZES AND CONTAINER WIDTH
      ---------------------------------------------------------- */
 
-  --container-max:     1200px;  /* максимальная ширина контента */
-  --container-narrow:  800px;   /* для текстовых секций */
-  --container-padding: var(--space-4); /* боковые отступы на мобилке */
+  --container-max:     1200px;  /* max content width */
+  --container-narrow:  800px;   /* for text-only sections */
+  --container-padding: var(--space-4); /* side padding on mobile */
 
   --header-height:     72px;
   --footer-padding-y:  var(--space-8);
 
 
   /* ----------------------------------------------------------
-     5. РАДИУСЫ
+     5. BORDER RADII
      ---------------------------------------------------------- */
 
   --radius-xs:   4px;
   --radius-sm:   8px;
   --radius-md:   12px;
   --radius-lg:   20px;
-  --radius-full: 9999px; /* для круглых кнопок/аватарок */
+  --radius-full: 9999px; /* for round buttons/avatars */
 
 
   /* ----------------------------------------------------------
-     6. ТЕНИ
+     6. SHADOWS
      ---------------------------------------------------------- */
 
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -131,7 +131,7 @@
 
 
   /* ----------------------------------------------------------
-     7. ПЕРЕХОДЫ И АНИМАЦИИ
+     7. TRANSITIONS AND ANIMATIONS
      ---------------------------------------------------------- */
 
   --transition-fast:   0.15s ease-in-out;
@@ -143,7 +143,7 @@
 
 
   /* ----------------------------------------------------------
-     8. Z-INDEX (слои)
+     8. Z-INDEX (layers)
      ---------------------------------------------------------- */
 
   --z-base:     1;
@@ -156,8 +156,9 @@
 
 
   /* ----------------------------------------------------------
-     9. BREAKPOINTS (для справки — в media query значения
-        указываются явно, CSS-переменные в @media не работают)
+     9. BREAKPOINTS (for reference — inside media queries,
+        values are written explicitly; CSS variables do not
+        work in @media conditions)
      ---------------------------------------------------------- */
 
   /* --bp-sm:  576px;  */
