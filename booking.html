@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование - Grand Horizon Hotel</title>
+    <!-- Подключи свои стили -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components/forms.css"> <!-- Если есть общие стили форм -->
+</head>
+<body>
+    <header>
+        <!-- Тут будет шапка сайта (общая для всех страниц) -->
+    </header>
 
+    <main class="booking-container">
+        <h1>Забронировать номер</h1>
+        
+        <form id="booking-form" novalidate>
+            <!-- Поле ФИО -->
+            <div class="form-group">
+                <label for="fullname">ФИО гостя:</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Иванов Иван Иванович" required>
+                <span class="error-message"></span>
+            </div>
+
+            <!-- Поле Телефон -->
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" placeholder="+7(___)___-__-__" required>
+                <span class="error-message"></span>
+            </div>
+
+            <!-- Поле Email -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
+                <span class="error-message"></span>
+            </div>
+
+            <!-- Выбор номера -->
+            <div class="form-group">
+                <label for="room-type">Выбор номера:</label>
+                <select id="room-type" name="room-type" required>
+                    <option value="">-- Выберите категорию --</option>
+                    <option value="standard">Стандарт</option>
+                    <option value="comfort">Комфорт</option>
+                    <option value="lux">Люкс</option>
+                </select>
+                <span class="error-message"></span>
+            </div>
+
+            <!-- Даты -->
+            <div class="form-group dates-group">
+                <div>
+                    <label for="check-in">Дата заезда:</label>
+                    <input type="date" id="check-in" name="check-in" required>
+                    <span class="error-message"></span>
+                </div>
+                <div>
+                    <label for="check-out">Дата выезда:</label>
+                    <input type="date" id="check-out" name="check-out" required>
+                    <span class="error-message"></span>
+                </div>
+            </div>
+
+            <!-- Пожелания -->
+            <div class="form-group">
+                <label for="wishes">Особые пожелания:</label>
+                <textarea id="wishes" name="wishes" rows="4" placeholder="Аллергия на перо, нужна детская кроватка..."></textarea>
+            </div>
+
+            <!-- Чекбокс согласия -->
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="agreement" name="agreement" required>
+                <label for="agreement">Согласен на обработку персональных данных</label>
+                <span class="error-message"></span>
+            </div>
+
+            <button type="submit" class="btn-submit">Забронировать</button>
+        </form>
+    </main>
+
+    <footer>
+        <!-- Подвал -->
+    </footer>
+
+    <!-- Подключение скриптов -->
+    <script src="js/validation.js"></script>
+</body>
+</html>
