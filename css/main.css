@@ -1,0 +1,463 @@
+/* ============================================================
+   css/main.css
+   Базовая типографика, layout и утилиты проекта «Отель»
+   Автор: Кто меня лидом назначил только
+   Подключать ПОСЛЕ reset.css и variables.css
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ BODY
+   ---------------------------------------------------------- */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  letter-spacing: var(--ls-normal);
+}
+
+/* Плавная прокрутка и отступ под фиксированный хедер */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+
+/* ----------------------------------------------------------
+   2. ТИПОГРАФИКА — ЗАГОЛОВКИ
+   ---------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+}
+
+h2 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+}
+
+h3 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+}
+
+h4 {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+}
+
+h5 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+}
+
+h6 {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+}
+
+
+/* ----------------------------------------------------------
+   3. ТИПОГРАФИКА — ТЕКСТ
+   ---------------------------------------------------------- */
+
+p {
+  margin-bottom: var(--space-4);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Вводный абзац — крупнее и мягче по цвету */
+.lead {
+  font-size: var(--fs-md);
+  line-height: var(--lh-loose);
+  color: var(--color-text-muted);
+}
+
+/* Мелкий вспомогательный текст */
+.text-sm {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.text-xs {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+/* Выделение */
+strong, b {
+  font-weight: var(--fw-semibold);
+  color: var(--color-secondary);
+}
+
+em, i {
+  font-style: italic;
+}
+
+mark {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-xs);
+}
+
+
+/* ----------------------------------------------------------
+   4. ССЫЛКИ
+   ---------------------------------------------------------- */
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* Ссылка-подчёркивание только при наведении */
+.link-underline {
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+.link-underline:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  text-decoration: none;
+}
+
+
+/* ----------------------------------------------------------
+   5. СПИСКИ
+   ---------------------------------------------------------- */
+
+/* Маркированный список (использовать классом, т.к. в reset убрали) */
+.list-bullets {
+  list-style: disc;
+  padding-left: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+
+.list-bullets li {
+  margin-bottom: var(--space-2);
+}
+
+.list-bullets li::marker {
+  color: var(--color-primary);
+}
+
+/* Нумерованный список */
+.list-numbered {
+  list-style: decimal;
+  padding-left: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+
+.list-numbered li {
+  margin-bottom: var(--space-2);
+}
+
+.list-numbered li::marker {
+  color: var(--color-primary);
+  font-weight: var(--fw-semibold);
+}
+
+
+/* ----------------------------------------------------------
+   6. ИЗОБРАЖЕНИЯ И МЕДИА
+   ---------------------------------------------------------- */
+
+img {
+  border-radius: var(--radius-sm);
+}
+
+/* Круглое изображение (аватар) */
+.img-circle {
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+/* Обёртка с соотношением сторон 16:9 */
+.img-ratio {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+.img-ratio::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
+.img-ratio > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+
+/* ----------------------------------------------------------
+   7. КОНТЕЙНЕРЫ И LAYOUT
+   ---------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+/* Секция с вертикальными отступами */
+.section {
+  padding-block: var(--space-9);
+}
+
+.section--sm {
+  padding-block: var(--space-7);
+}
+
+.section--dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-inverse);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3 {
+  color: var(--color-text-inverse);
+}
+
+.section--soft {
+  background-color: var(--color-bg-soft);
+}
+
+
+/* ----------------------------------------------------------
+   8. ЗАГОЛОВОК СЕКЦИИ (переиспользуемый блок)
+   ---------------------------------------------------------- */
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-7);
+}
+
+.section-header__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  color: var(--color-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.section-header__subtitle {
+  font-size: var(--fs-md);
+  color: var(--color-text-muted);
+  line-height: var(--lh-loose);
+  margin: 0;
+}
+
+
+/* ----------------------------------------------------------
+   9. УТИЛИТЫ — ТЕКСТ
+   ---------------------------------------------------------- */
+
+.text-center  { text-align: center; }
+.text-left    { text-align: left; }
+.text-right   { text-align: right; }
+
+.text-muted   { color: var(--color-text-muted); }
+.text-primary { color: var(--color-primary); }
+.text-error   { color: var(--color-error); }
+.text-success { color: var(--color-success); }
+
+.uppercase    { text-transform: uppercase; letter-spacing: var(--ls-wide); }
+
+
+/* ----------------------------------------------------------
+   10. УТИЛИТЫ — FLEX и GRID
+   ---------------------------------------------------------- */
+
+.flex         { display: flex; }
+.flex-col     { flex-direction: column; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap    { flex-wrap: wrap; }
+
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-5 { gap: var(--space-5); }
+.gap-6 { gap: var(--space-6); }
+
+.grid { display: grid; }
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-5);
+}
+
+
+/* ----------------------------------------------------------
+   11. УТИЛИТЫ — ОТСТУПЫ
+   ---------------------------------------------------------- */
+
+/* Margin-top */
+.mt-0 { margin-top: 0; }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-5 { margin-top: var(--space-5); }
+.mt-6 { margin-top: var(--space-6); }
+
+/* Margin-bottom */
+.mb-0 { margin-bottom: 0; }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-5 { margin-bottom: var(--space-5); }
+.mb-6 { margin-bottom: var(--space-6); }
+
+
+/* ----------------------------------------------------------
+   12. ДОСТУПНОСТЬ
+   ---------------------------------------------------------- */
+
+/* Скрыть визуально, но оставить для screen-reader */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Скрыть полностью */
+.hidden {
+  display: none !important;
+}
+
+/* Блокировка прокрутки body (для модалок) */
+.no-scroll {
+  overflow: hidden;
+}
+
+
+/* ----------------------------------------------------------
+   13. АДАПТИВНОСТЬ
+   ---------------------------------------------------------- */
+
+/* Планшет */
+@media (max-width: 992px) {
+  :root {
+    --fs-2xl: 2rem;    /* H1 уменьшаем с 40px до 32px */
+    --fs-3xl: 2.5rem;  /* Hero с 56px до 40px */
+    --space-9: 3rem;
+    --space-10: 4rem;
+  }
+
+  .section {
+    padding-block: var(--space-8);
+  }
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+  :root {
+    --fs-xl:  1.75rem; /* H2 с 32px до 28px */
+    --fs-2xl: 1.75rem;
+    --fs-3xl: 2rem;
+    --container-padding: var(--space-4);
+    --header-height: 60px;
+  }
+
+  body {
+    font-size: var(--fs-base);
+  }
+
+  .section {
+    padding-block: var(--space-7);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-5);
+  }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 480px) {
+  :root {
+    --fs-2xl: 1.5rem;
+    --fs-3xl: 1.75rem;
+    --space-7: 1.75rem;
+    --space-8: 2rem;
+  }
+
+  .container {
+    padding-inline: var(--space-3);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   14. ПЕЧАТЬ
+   ---------------------------------------------------------- */
+
+@media print {
+  header,
+  footer,
+  nav,
+  .btn,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #555;
+  }
+}
