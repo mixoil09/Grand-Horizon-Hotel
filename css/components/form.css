@@ -1,0 +1,434 @@
+/* ============================================================
+   css/components/forms.css
+   Базовые стили форм и инпутов
+   Автор:Дипсик
+   Подключать ПОСЛЕ main.css
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. ГРУППА ПОЛЯ (label + input + error)
+   ---------------------------------------------------------- */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Label */
+.form-label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-secondary);
+  letter-spacing: var(--ls-normal);
+  line-height: 1.4;
+}
+
+/* Обязательное поле — звёздочка */
+.form-label--required::after {
+  content: " *";
+  color: var(--color-error);
+  font-weight: var(--fw-bold);
+}
+
+/* Подсказка под полем */
+.form-hint {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Сообщение об ошибке под полем */
+.form-error {
+  font-size: var(--fs-xs);
+  color: var(--color-error);
+  line-height: 1.4;
+  min-height: 1em;
+}
+
+
+/* ----------------------------------------------------------
+   2. БАЗОВЫЕ ИНПУТЫ (text, email, tel, date)
+   ---------------------------------------------------------- */
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Placeholder */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+/* Hover */
+.form-input:hover:not(:disabled):not(:focus),
+.form-textarea:hover:not(:disabled):not(:focus),
+.form-select:hover:not(:disabled):not(:focus) {
+  border-color: var(--color-border-strong);
+}
+
+/* Focus — основной акцент */
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+/* Disabled */
+.form-input:disabled,
+.form-textarea:disabled,
+.form-select:disabled {
+  background-color: var(--color-bg-soft);
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.form-input:disabled::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Readonly */
+.form-input[readonly],
+.form-textarea[readonly] {
+  background-color: var(--color-bg-soft);
+  cursor: default;
+}
+
+/* Состояние ошибки */
+.form-input.error,
+.form-textarea.error,
+.form-select.error {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.form-input.error:focus,
+.form-textarea.error:focus,
+.form-select.error:focus {
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.2);
+}
+
+/* Состояние успеха */
+.form-input.success,
+.form-textarea.success,
+.form-select.success {
+  border-color: var(--color-success);
+}
+
+
+/* ----------------------------------------------------------
+   3. TEXTAREA
+   ---------------------------------------------------------- */
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: var(--lh-normal);
+}
+
+
+/* ----------------------------------------------------------
+   4. SELECT — кастомная стрелка
+   ---------------------------------------------------------- */
+
+.form-select {
+  padding-right: var(--space-8);
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3e%3cpath fill='none' stroke='%236b6b6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  background-size: 12px 8px;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3e%3cpath fill='none' stroke='%23a9713c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3e%3c/svg%3e");
+}
+
+/* Убираем дефолтную стрелку в IE/Edge */
+.form-select::-ms-expand {
+  display: none;
+}
+
+
+/* ----------------------------------------------------------
+   5. ЧЕКБОКС и РАДИО — кастомные
+   ---------------------------------------------------------- */
+
+/* Обёртка для чекбокса/радио с меткой */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: var(--space-3);
+}
+
+.form-check:last-child {
+  margin-bottom: 0;
+}
+
+/* Скрываем нативный input, но оставляем доступным */
+.form-check__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Кастомный квадрат/круг */
+.form-check__box {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border-strong);
+  background-color: var(--color-bg);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+  position: relative;
+  margin-top: 2px;
+}
+
+/* Чекбокс — квадрат со скруглением */
+.form-check__box--checkbox {
+  border-radius: var(--radius-xs);
+}
+
+/* Радио — круг */
+.form-check__box--radio {
+  border-radius: var(--radius-full);
+}
+
+/* Hover */
+.form-check:hover .form-check__box {
+  border-color: var(--color-primary);
+}
+
+/* Focus */
+.form-check__input:focus-visible + .form-check__box {
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+/* Checked — чекбокс (галочка) */
+.form-check__input:checked + .form-check__box--checkbox {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.form-check__input:checked + .form-check__box--checkbox::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 11px;
+  border: solid var(--color-text-inverse);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Checked — радио (точка) */
+.form-check__input:checked + .form-check__box--radio {
+  border-color: var(--color-primary);
+}
+
+.form-check__input:checked + .form-check__box--radio::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+}
+
+/* Disabled */
+.form-check__input:disabled + .form-check__box {
+  background-color: var(--color-bg-soft);
+  border-color: var(--color-border);
+  cursor: not-allowed;
+}
+
+.form-check__input:disabled ~ .form-check__label {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.form-check:has(.form-check__input:disabled) {
+  cursor: not-allowed;
+}
+
+/* Текст метки */
+.form-check__label {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* Ссылка внутри метки */
+.form-check__label a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+
+/* ----------------------------------------------------------
+   6. ГРУППА РАДИО/ЧЕКБОКСОВ (fieldset)
+   ---------------------------------------------------------- */
+
+.form-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+
+.form-fieldset__legend {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-secondary);
+  margin-bottom: var(--space-3);
+  padding: 0;
+}
+
+.form-checks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Горизонтальное расположение */
+.form-checks--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+
+/* ----------------------------------------------------------
+   7. ПОДСКАЗКА ДЛЯ ПОЛЯ С ИКОНКОЙ (по желанию)
+   ---------------------------------------------------------- */
+
+.form-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-input-wrapper .form-input {
+  padding-left: var(--space-8);
+}
+
+.form-input-wrapper__icon {
+  position: absolute;
+  left: var(--space-4);
+  color: var(--color-text-muted);
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ----------------------------------------------------------
+   8. СЕТКА ФОРМЫ (2 колонки на десктопе)
+   ---------------------------------------------------------- */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4) var(--space-5);
+}
+
+.form-grid .form-group--full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ----------------------------------------------------------
+   9. ПЛЕЙСХОЛДЕР-ОБЁРТКА ДЛЯ ФОРМЫ (карточка)
+   ---------------------------------------------------------- */
+
+.form-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 640px) {
+  .form-card {
+    padding: var(--space-5) var(--space-4);
+  }
+}
+
+
+/* ----------------------------------------------------------
+   10. БЛОК ОШИБКИ НА УРОВНЕ ФОРМЫ
+   ---------------------------------------------------------- */
+
+.form-alert {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-4);
+  border: 1px solid transparent;
+}
+
+.form-alert--error {
+  background-color: var(--color-error-bg);
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.form-alert--success {
+  background-color: #e8f5e9;
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.form-alert--info {
+  background-color: #e1f5fe;
+  border-color: var(--color-info);
+  color: var(--color-info);
+}
