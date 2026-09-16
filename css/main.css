@@ -1,12 +1,12 @@
 /* ============================================================
    css/main.css
-   Базовая типографика, layout и утилиты проекта «Отель»
-   Автор: Кто меня лидом назначил только
-   Подключать ПОСЛЕ reset.css и variables.css
+   Base typography, layout and utilities for the "Hotel" project
+   Author: Whoever decided I'm the lead
+   Connect AFTER reset.css and variables.css
    ============================================================ */
 
 /* ----------------------------------------------------------
-   1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ BODY
+   1. GLOBAL BODY SETTINGS
    ---------------------------------------------------------- */
 
 body {
@@ -19,7 +19,7 @@ body {
   letter-spacing: var(--ls-normal);
 }
 
-/* Плавная прокрутка и отступ под фиксированный хедер */
+/* Smooth scrolling and offset for the fixed header */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
@@ -27,7 +27,7 @@ html {
 
 
 /* ----------------------------------------------------------
-   2. ТИПОГРАФИКА — ЗАГОЛОВКИ
+   2. TYPOGRAPHY — HEADINGS
    ---------------------------------------------------------- */
 
 h1, h2, h3, h4, h5, h6 {
@@ -72,7 +72,7 @@ h6 {
 
 
 /* ----------------------------------------------------------
-   3. ТИПОГРАФИКА — ТЕКСТ
+   3. TYPOGRAPHY — TEXT
    ---------------------------------------------------------- */
 
 p {
@@ -83,14 +83,14 @@ p:last-child {
   margin-bottom: 0;
 }
 
-/* Вводный абзац — крупнее и мягче по цвету */
+/* Lead paragraph — larger and softer in color */
 .lead {
   font-size: var(--fs-md);
   line-height: var(--lh-loose);
   color: var(--color-text-muted);
 }
 
-/* Мелкий вспомогательный текст */
+/* Small helper text */
 .text-sm {
   font-size: var(--fs-sm);
   color: var(--color-text-muted);
@@ -101,7 +101,7 @@ p:last-child {
   color: var(--color-text-muted);
 }
 
-/* Выделение */
+/* Emphasis */
 strong, b {
   font-weight: var(--fw-semibold);
   color: var(--color-secondary);
@@ -120,7 +120,7 @@ mark {
 
 
 /* ----------------------------------------------------------
-   4. ССЫЛКИ
+   4. LINKS
    ---------------------------------------------------------- */
 
 a {
@@ -141,7 +141,7 @@ a:focus-visible {
   border-radius: var(--radius-xs);
 }
 
-/* Ссылка-подчёркивание только при наведении */
+/* Link with underline only on hover */
 .link-underline {
   color: var(--color-text);
   border-bottom: 1px solid var(--color-border);
@@ -154,10 +154,10 @@ a:focus-visible {
 
 
 /* ----------------------------------------------------------
-   5. СПИСКИ
+   5. LISTS
    ---------------------------------------------------------- */
 
-/* Маркированный список (использовать классом, т.к. в reset убрали) */
+/* Bulleted list (use as a class since reset removed list styles) */
 .list-bullets {
   list-style: disc;
   padding-left: var(--space-5);
@@ -172,7 +172,7 @@ a:focus-visible {
   color: var(--color-primary);
 }
 
-/* Нумерованный список */
+/* Numbered list */
 .list-numbered {
   list-style: decimal;
   padding-left: var(--space-5);
@@ -190,20 +190,20 @@ a:focus-visible {
 
 
 /* ----------------------------------------------------------
-   6. ИЗОБРАЖЕНИЯ И МЕДИА
+   6. IMAGES AND MEDIA
    ---------------------------------------------------------- */
 
 img {
   border-radius: var(--radius-sm);
 }
 
-/* Круглое изображение (аватар) */
+/* Circular image (avatar) */
 .img-circle {
   border-radius: var(--radius-full);
   object-fit: cover;
 }
 
-/* Обёртка с соотношением сторон 16:9 */
+/* Wrapper with 16:9 aspect ratio */
 .img-ratio {
   position: relative;
   overflow: hidden;
@@ -225,7 +225,7 @@ img {
 
 
 /* ----------------------------------------------------------
-   7. КОНТЕЙНЕРЫ И LAYOUT
+   7. CONTAINERS AND LAYOUT
    ---------------------------------------------------------- */
 
 .container {
@@ -239,7 +239,7 @@ img {
   max-width: var(--container-narrow);
 }
 
-/* Секция с вертикальными отступами */
+/* Section with vertical padding */
 .section {
   padding-block: var(--space-9);
 }
@@ -265,7 +265,7 @@ img {
 
 
 /* ----------------------------------------------------------
-   8. ЗАГОЛОВОК СЕКЦИИ (переиспользуемый блок)
+   8. SECTION HEADER (reusable block)
    ---------------------------------------------------------- */
 
 .section-header {
@@ -290,7 +290,7 @@ img {
 
 
 /* ----------------------------------------------------------
-   9. УТИЛИТЫ — ТЕКСТ
+   9. UTILITIES — TEXT
    ---------------------------------------------------------- */
 
 .text-center  { text-align: center; }
@@ -306,7 +306,7 @@ img {
 
 
 /* ----------------------------------------------------------
-   10. УТИЛИТЫ — FLEX и GRID
+   10. UTILITIES — FLEX AND GRID
    ---------------------------------------------------------- */
 
 .flex         { display: flex; }
@@ -332,7 +332,7 @@ img {
 
 
 /* ----------------------------------------------------------
-   11. УТИЛИТЫ — ОТСТУПЫ
+   11. UTILITIES — SPACING
    ---------------------------------------------------------- */
 
 /* Margin-top */
@@ -353,10 +353,10 @@ img {
 
 
 /* ----------------------------------------------------------
-   12. ДОСТУПНОСТЬ
+   12. ACCESSIBILITY
    ---------------------------------------------------------- */
 
-/* Скрыть визуально, но оставить для screen-reader */
+/* Hide visually but keep for screen readers */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -369,26 +369,26 @@ img {
   border: 0;
 }
 
-/* Скрыть полностью */
+/* Hide completely */
 .hidden {
   display: none !important;
 }
 
-/* Блокировка прокрутки body (для модалок) */
+/* Lock body scrolling (for modals) */
 .no-scroll {
   overflow: hidden;
 }
 
 
 /* ----------------------------------------------------------
-   13. АДАПТИВНОСТЬ
+   13. RESPONSIVENESS
    ---------------------------------------------------------- */
 
-/* Планшет */
+/* Tablet */
 @media (max-width: 992px) {
   :root {
-    --fs-2xl: 2rem;    /* H1 уменьшаем с 40px до 32px */
-    --fs-3xl: 2.5rem;  /* Hero с 56px до 40px */
+    --fs-2xl: 2rem;    /* Reduce H1 from 40px to 32px */
+    --fs-3xl: 2.5rem;  /* Reduce hero from 56px to 40px */
     --space-9: 3rem;
     --space-10: 4rem;
   }
@@ -398,10 +398,10 @@ img {
   }
 }
 
-/* Мобильные */
+/* Mobile */
 @media (max-width: 768px) {
   :root {
-    --fs-xl:  1.75rem; /* H2 с 32px до 28px */
+    --fs-xl:  1.75rem; /* Reduce H2 from 32px to 28px */
     --fs-2xl: 1.75rem;
     --fs-3xl: 2rem;
     --container-padding: var(--space-4);
@@ -421,7 +421,7 @@ img {
   }
 }
 
-/* Маленькие телефоны */
+/* Small phones */
 @media (max-width: 480px) {
   :root {
     --fs-2xl: 1.5rem;
@@ -437,7 +437,7 @@ img {
 
 
 /* ----------------------------------------------------------
-   14. ПЕЧАТЬ
+   14. PRINT
    ---------------------------------------------------------- */
 
 @media print {
