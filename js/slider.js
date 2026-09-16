@@ -26,3 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
         showSlide(currentIndex);
     });
 });
+
