@@ -4,49 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Слайдер отзывов</title>
-
-    <!-- Порядок подключения важен: reset -> variables -> main -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/main.css">
-
-    <!-- Если style.css содержит стили слайдера — оставь его после main.css -->
 </head>
 <body>
 
-    <section class="reviews">
-        <h2>Отзывы гостей</h2>
+    <section class="section section--soft">
+        <div class="container">
 
-        <div class="slider-container">
-            <!-- Карточка 1 -->
-            <div class="review-card active">
-                <div class="guest-name">Артём Попиков</div>
-                <div class="review-text">Отличный сервис! Всё понравилось, обязательно вернусь ещё.</div>
-                <div class="stars">★★★★★</div>
+            <div class="section-header">
+                <h2 class="section-header__title">Отзывы гостей</h2>
+                <p class="section-header__subtitle">Что говорят наши гости об отеле</p>
             </div>
 
-            <!-- Карточка 2 -->
-            <div class="review-card">
-                <div class="guest-name">Иван Иванов</div>
-                <div class="review-text">Хорошее место, но немного шумно. В целом, рекомендую.</div>
-                <div class="stars">★★★★☆</div>
+            <div class="grid-auto">
+
+                <!-- Карточка 1 -->
+                <div class="review-card active">
+                    <h3 class="text-center">Артём Попиков</h3>
+                    <p class="text-center">Отличный сервис! Всё понравилось, обязательно вернусь ещё.</p>
+                    <div class="text-center text-primary fs-md">★★★★★</div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="review-card">
+                    <h3 class="text-center">Иван Иванов</h3>
+                    <p class="text-center">Хорошее место, но немного шумно. В целом, рекомендую.</p>
+                    <div class="text-center text-primary fs-md">★★★★☆</div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="review-card">
+                    <h3 class="text-center">Мария Петрова</h3>
+                    <p class="text-center">Уютная атмосфера и вежливый персонал. Спасибо за отдых!</p>
+                    <div class="text-center text-primary fs-md">★★★★★</div>
+                </div>
+
             </div>
 
-            <!-- Карточка 3 -->
-            <div class="review-card">
-                <div class="guest-name">Мария Петрова</div>
-                <div class="review-text">Уютная атмосфера и вежливый персонал. Спасибо за отдых!</div>
-                <div class="stars">★★★★★</div>
+            <div class="flex flex-center gap-4 mt-6">
+                <button id="prevBtn">← Влево</button>
+                <button id="nextBtn">Вправо →</button>
             </div>
-        </div>
 
-        <div class="controls">
-            <button id="prevBtn">← Влево</button>
-            <button id="nextBtn">Вправо →</button>
         </div>
     </section>
 
-    <!-- Подключаем JS файл -->
     <script src="js/slider.js"></script>
 </body>
 </html>
