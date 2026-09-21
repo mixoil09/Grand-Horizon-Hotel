@@ -1,0 +1,95 @@
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Контейнер, в котором едут слайды */
+.slider__container {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Дорожка слайдов — сдвигается через transform: translateX() из JS */
+.slider__track {
+  display: flex;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+/* Один слайд */
+.slider__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Кнопки вперёд/назад */
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.slider__btn:hover {
+  background-color: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.slider__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.slider__btn--prev {
+  left: 12px;
+}
+
+.slider__btn--next {
+  right: 12px;
+}
+
+/* Точки-индикаторы (опционально) */
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.slider__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #d0d0d0;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.slider__dot--active {
+  background-color: #1a1a1a;
+}
+
+@media (max-width: 480px) {
+  .slider__btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+}
