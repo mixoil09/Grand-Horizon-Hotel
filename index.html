@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Слайдер отзывов</title>
-    <!-- Подключаем внешний CSS файл -->
+
+    <!-- Порядок подключения важен: reset -> variables -> main -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Если style.css содержит стили слайдера — оставь его после main.css -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <section class="reviews">
         <h2>Отзывы гостей</h2>
-        
+
         <div class="slider-container">
             <!-- Карточка 1 -->
             <div class="review-card active">
