@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Слайдер отзывов</title>
+    <link rel="stylesheet" href="components/reset.css">
+    <link rel="stylesheet" href="components/variables.css">
+    <link rel="stylesheet" href="components/main.css">
+    <link rel="stylesheet" href="components/buttons.css">
+    <link rel="stylesheet" href="components/forms.css">
 </head>
 <body>
+
+    <section class="hero">
+        <h1>Ваш идеальный отдых начинается здесь!</h1>
+        <p>Откройте для себя мир комфорта, роскоши и незабываемых впечатлений</p>
+        <a href="#booking" class="btn-book">Забронировать номер</a>
+    </section>
 
     <section class="reviews">
         <h2>Отзывы гостей</h2>
         
         <div class="slider-container">
-            <!-- Карточка 1 -->
             <div class="review-card active">
                 <div class="guest-name">Артём Попиков</div>
                 <div class="review-text">Отличный сервис! Всё понравилось, обязательно вернусь ещё.</div>
                 <div class="stars">★★★★★</div>
             </div>
 
-            <!-- Карточка 2 -->
             <div class="review-card">
                 <div class="guest-name">Иван Иванов</div>
                 <div class="review-text">Хорошее место, но немного шумно. В целом, рекомендую.</div>
                 <div class="stars">★★★★☆</div>
             </div>
 
-            <!-- Карточка 3 -->
             <div class="review-card">
                 <div class="guest-name">Мария Петрова</div>
                 <div class="review-text">Уютная атмосфера и вежливый персонал. Спасибо за отдых!</div>
@@ -39,7 +47,6 @@
         </div>
     </section>
 
-    <!-- Подключаем JS файл -->
     <script src="js/slider.js"></script>
 </body>
 </html>
