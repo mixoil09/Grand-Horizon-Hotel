@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Слайдер отзывов</title>
+    <link rel="stylesheet" href="components/reset.css">
+    <link rel="stylesheet" href="components/variables.css">
+    <link rel="stylesheet" href="components/main.css">
+    <link rel="stylesheet" href="components/buttons.css">
+    <link rel="stylesheet" href="components/forms.css">
 </head>
 <body>
+
+    <section class="hero section section--dark" style="
+        background: linear-gradient(rgba(31, 58, 82, 0.7), rgba(31, 58, 82, 0.7)), 
+                    url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920') center/cover no-repeat;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    ">
+        <div class="container">
+            <div class="flex flex-col flex-center text-center">
+                <h1 style="font-size: var(--fs-3xl); color: var(--color-text-inverse); margin-bottom: var(--space-5);">
+                    Ваш идеальный отдых начинается здесь!
+                </h1>
+                <p class="lead" style="font-size: var(--fs-lg); color: var(--color-text-inverse); margin-bottom: var(--space-7); max-width: 700px;">
+                    Откройте для себя мир комфорта, роскоши и незабываемых впечатлений в нашем отеле
+                </p>
+                <a href="#booking" class="btn btn-primary btn-large">Забронировать номер</a>
+            </div>
+        </div>
+    </section>
 
     <section class="reviews">
         <h2>Отзывы гостей</h2>
@@ -38,28 +63,7 @@
             <button id="nextBtn">Вправо →</button>
         </div>
     </section>
-<footer class="footer">
-    <div class="footer__container">
-        <div class="footer__info">
-            <h3 class="footer__title">Grand Horizon Hotel</h3>
-            <p class="footer__address">📍 г. Сочи, ул. Приморская, д. 15</p>
-            <p class="footer__phone">📞 <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
-            <p class="footer__email">✉️ <a href="mailto:info@grandhorizon.ru">info@grandhorizon.ru</a></p>
-        </div>
-        <div class="footer__socials">
-            <h4 class="footer__subtitle">Мы в соцсетях:</h4>
-            <div class="footer__social-links">
-                <a href="#" class="footer__social-link">ВКонтакте</a>
-                <a href="#" class="footer__social-link">Telegram</a>
-                <a href="#" class="footer__social-link">WhatsApp</a>
-            </div>
-        </div>
-    </div>
-    <div class="footer__copyright">
-        <p>&copy; 2026 Grand Horizon Hotel. Все права защищены.</p>
-    </div>
-</footer>
-    <!-- Подключаем JS файл -->
+
     <script src="js/slider.js"></script>
 </body>
 </html>
