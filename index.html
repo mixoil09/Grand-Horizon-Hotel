@@ -1,44 +1,161 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Слайдер отзывов</title>
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/variables.css">
 </head>
 <body>
-
-    <section class="reviews">
-        <h2>Отзывы гостей</h2>
-        
-        <div class="slider-container">
-            <!-- Карточка 1 -->
-            <div class="review-card active">
-                <div class="guest-name">Артём Попиков</div>
-                <div class="review-text">Отличный сервис! Всё понравилось, обязательно вернусь ещё.</div>
-                <div class="stars">★★★★★</div>
-            </div>
-
-            <!-- Карточка 2 -->
-            <div class="review-card">
-                <div class="guest-name">Иван Иванов</div>
-                <div class="review-text">Хорошее место, но немного шумно. В целом, рекомендую.</div>
-                <div class="stars">★★★★☆</div>
-            </div>
-
-            <!-- Карточка 3 -->
-            <div class="review-card">
-                <div class="guest-name">Мария Петрова</div>
-                <div class="review-text">Уютная атмосфера и вежливый персонал. Спасибо за отдых!</div>
-                <div class="stars">★★★★★</div>
-            </div>
+    <header class="section--soft">
+        <div class="container flex-between" style="padding-block: var(--space-4);">
+            <a href="index.html" style="font-weight: var(--fw-bold); font-size: var(--fs-lg);">Grand Horizon</a>
+            <nav class="flex gap-4">
+                <a href="index.html">Главная</a>
+                <a href="rooms.html">Номера</a>
+                <a href="booking.html" class="text-primary">Бронирование</a>
+            </nav>
         </div>
-
-        <div class="controls">
-            <button id="prevBtn">← Влево</button>
-            <button id="nextBtn">Вправо →</button>
+    </header>
+    <section class="hero section section--dark" style="
+        background: linear-gradient(rgba(31, 58, 82, 0.7), rgba(31, 58, 82, 0.7)), 
+                    url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920') center/cover no-repeat;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    ">
+        <div class="container">
+            <div class="flex flex-col flex-center text-center">
+                <h1 style="font-size: var(--fs-3xl); color: var(--color-text-inverse); margin-bottom: var(--space-5);">
+                    Ваш идеальный отдых начинается здесь!
+                </h1>
+                <p class="lead" style="font-size: var(--fs-lg); color: var(--color-text-inverse); margin-bottom: var(--space-7); max-width: 700px;">
+                    Откройте для себя мир комфорта, роскоши и незабываемых впечатлений в нашем отеле
+                </p>
+                <a href="booking.html" class="btn btn-primary btn-large">Забронировать номер</a>
+            </div>
         </div>
     </section>
 
+<section class="section section--soft" id="advantages">
+  <div class="container">
+
+    <!-- Заголовок секции -->
+    <div class="section-header">
+      <h2 class="section-header__title">Преимущества нашего отеля</h2>
+      <p class="section-header__subtitle">
+        Всё необходимое для вашего идеального отдыха уже включено в проживание
+      </p>
+    </div>
+
+    <!-- Сетка преимуществ (auto-fit автоматически адаптирует колонки) -->
+    <div class="grid-auto">
+
+      <!-- 1. Панорамный вид -->
+      <div class="flex flex-col text-center gap-4">
+        <h2 class="text-primary mb-0">🌆</h2>
+        <h4 class="mb-0">Панорамный вид</h4>
+        <p class="text-muted mb-0">Номера с панорамным видом на город/море</p>
+      </div>
+
+      <!-- 2. Wi-Fi, завтрак, парковка -->
+      <div class="flex flex-col text-center gap-4">
+        <h2 class="text-primary mb-0">📶</h2>
+        <h4 class="mb-0">Всё включено</h4>
+        <p class="text-muted mb-0">Бесплатный Wi-Fi, завтрак и парковка</p>
+      </div>
+
+      <!-- 3. Круглосуточное обслуживание -->
+      <div class="flex flex-col text-center gap-4">
+        <h2 class="text-primary mb-0">🛎️</h2>
+        <h4 class="mb-0">Сервис 24/7</h4>
+        <p class="text-muted mb-0">Круглосуточное обслуживание номеров</p>
+      </div>
+
+      <!-- 4. SPA и фитнес -->
+      <div class="flex flex-col text-center gap-4">
+        <h2 class="text-primary mb-0">🧖</h2>
+        <h4 class="mb-0">SPA и фитнес</h4>
+        <p class="text-muted mb-0">SPA-центр и фитнес-зал для гостей</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <section class="section section--soft">
+        <div class="container">
+
+            <div class="section-header">
+                <h2 class="section-header__title">Отзывы гостей</h2>
+                <p class="section-header__subtitle">Что говорят наши гости об отеле</p>
+            </div>
+
+            <div class="grid-auto">
+
+                <!-- Карточка 1 -->
+                <div class="review-card active">
+                    <h3 class="text-center">Артём Попиков</h3>
+                    <p class="text-center">Отличный сервис! Всё понравилось, обязательно вернусь ещё.</p>
+                    <div class="text-center text-primary fs-md">★★★★★</div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="review-card">
+                    <h3 class="text-center">Иван Иванов</h3>
+                    <p class="text-center">Хорошее место, но немного шумно. В целом, рекомендую.</p>
+                    <div class="text-center text-primary fs-md">★★★★☆</div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="review-card">
+                    <h3 class="text-center">Мария Петрова</h3>
+                    <p class="text-center">Уютная атмосфера и вежливый персонал. Спасибо за отдых!</p>
+                    <div class="text-center text-primary fs-md">★★★★★</div>
+                </div>
+
+            </div>
+
+            <div class="flex flex-center gap-4 mt-6">
+                <button id="prevBtn">← Влево</button>
+                <button id="nextBtn">Вправо →</button>
+            </div>
+
+        </div>
+    </section>
+<footer class="section section--dark">
+    <div class="container">
+        <!-- Сетка для двух колонок (адаптивная) -->
+        <div class="grid-auto">
+            
+            <!-- Блок с информацией -->
+            <div class="flex flex-col">
+                <h3>Grand Horizon Hotel</h3>
+                <p>📍 г. Сочи, ул. Приморская, д. 15</p>
+                <p>📞 <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+                <p>✉️ <a href="mailto:info@grandhorizon.ru">info@grandhorizon.ru</a></p>
+            </div>
+
+            <!-- Блок с соцсетями -->
+            <div class="flex flex-col">
+                <h4>Мы в соцсетях:</h4>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#">ВКонтакте</a>
+                    <a href="#">Telegram</a>
+                    <a href="#">WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Копирайт -->
+        <div class="mt-6 text-center text-sm">
+            <p>&copy; 2026 Grand Horizon Hotel. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
     <!-- Подключаем JS файл -->
     <script src="js/slider.js"></script>
 </body>

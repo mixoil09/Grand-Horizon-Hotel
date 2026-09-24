@@ -97,10 +97,37 @@
         </div>
     </main>
 
-    <!-- Подвал сайта (если он есть у команды, вставь сюда) -->
-    <footer class="section--dark" style="padding-block: var(--space-5); text-align: center;">
-        <p class="text-sm">© 2026 Grand Horizon Hotel. Все права защищены.</p>
-    </footer>
+    <footer class="section section--dark">
+    <div class="container">
+        <!-- Сетка для двух колонок (адаптивная) -->
+        <div class="grid-auto">
+            
+            <!-- Блок с информацией -->
+            <div class="flex flex-col">
+                <h3>Grand Horizon Hotel</h3>
+                <p>📍 г. Сочи, ул. Приморская, д. 15</p>
+                <p>📞 <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+                <p>✉️ <a href="mailto:info@grandhorizon.ru">info@grandhorizon.ru</a></p>
+            </div>
+
+            <!-- Блок с соцсетями -->
+            <div class="flex flex-col">
+                <h4>Мы в соцсетях:</h4>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#">ВКонтакте</a>
+                    <a href="#">Telegram</a>
+                    <a href="#">WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Копирайт -->
+        <div class="mt-6 text-center text-sm">
+            <p>&copy; 2026 Grand Horizon Hotel. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
 
     <!-- Подключение скрипта валидации -->
     <script src="js/validation.js"></script>

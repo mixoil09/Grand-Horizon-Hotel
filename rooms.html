@@ -1,32 +1,145 @@
 <!DOCTYPE html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог — Grand Horizon Hotel</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components/forms.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Номера и цены — калькулятор стоимости | Отель «Grand Aurora»</title>
+  <meta name="description" content="Укажите даты, количество гостей и тип номера — калькулятор покажет итоговую стоимость проживания.">
+
+  <!-- Порядок подключения важен: reset -> variables -> main -> rooms -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/rooms.css">
 </head>
 <body>
-    <form id="calculator">
-        <h3> Калькулятор стоимости </h3>
-        <label for="arrive"> Дата заезда </label>
-        <input type="date" id="arrive">
-        <label for="leave"> Дата выезда </label>
-        <input type="date" id="leave">
-        <label for="guestnumber"> Количество гостей </label>
-        <input type="number" id="guestnumber" min="1" max="5">
-        <input type="radio" name="roomtype" id="standard" value="standard">
-        <label for="standard"> Стандарт </label>
-        <input type="radio" name="roomtype" id="comfort" value="comfort">
-        <label for="comfort"> Комфорт </label>
-        <input type="radio" name="roomtype" id="lux" value="lux">
-        <label for="lux"> Люкс </label>
-        <button id="calcbutton"> Рассчитать </button>
-        <div id="resultblock" hidden>
-            <label> Итоговая цена </label>
-            <h3 id="output"></h3>
+
+  <!-- ══════════ Шапка сайта подключается здесь ══════════ -->
+<header class="section--soft">
+        <div class="container flex-between" style="padding-block: var(--space-4);">
+            <a href="index.html" style="font-weight: var(--fw-bold); font-size: var(--fs-lg);">Grand Horizon</a>
+            <nav class="flex gap-4">
+                <a href="index.html">Главная</a>
+                <a href="rooms.html">Номера</a>
+                <a href="booking.html" class="text-primary">Бронирование</a>
+            </nav>
         </div>
-    </form>
+    </header>
+  <main>
+    <!-- ══════════ БЛОК КАЛЬКУЛЯТОРА ══════════ -->
+    <section class="section section--soft" id="calc" aria-labelledby="calc-title">
+      <div class="container">
+
+        <div class="section-header">
+          <h2 class="section-header__title" id="calc-title">Калькулятор стоимости проживания</h2>
+          <p class="section-header__subtitle">
+            Укажите даты заезда и выезда, количество гостей и тип номера —
+            итоговая цена появится в блоке ниже.
+          </p>
+        </div>
+
+        <form class="calc" id="booking-calc" action="#" method="get">
+
+          <!-- Даты и гости -->
+          <div class="calc__grid">
+            <div class="calc__field">
+              <label class="calc__label" for="check-in">Дата заезда</label>
+              <input class="calc__input" type="date" id="check-in" name="check-in" required>
+            </div>
+
+            <div class="calc__field">
+              <label class="calc__label" for="check-out">Дата выезда</label>
+              <input class="calc__input" type="date" id="check-out" name="check-out" required>
+            </div>
+
+            <div class="calc__field">
+              <label class="calc__label" for="guests">Количество гостей</label>
+              <input class="calc__input" type="number" id="guests" name="guests"
+                     min="1" max="6" step="1" value="2" required>
+            </div>
+          </div>
+
+          <!-- Тип номера: радиокнопки -->
+          <fieldset class="calc__fieldset">
+            <legend class="calc__legend">Тип номера</legend>
+
+            <div class="calc__options">
+              <label class="calc__option">
+                <input type="radio" name="room-type" value="standard" data-price="3500" checked>
+                <span class="calc__option-card">
+                  <span class="calc__option-name">Стандарт</span>
+                  <span class="calc__option-price">от 3 500 ₽ / ночь</span>
+                </span>
+              </label>
+
+              <label class="calc__option">
+                <input type="radio" name="room-type" value="comfort" data-price="5200">
+                <span class="calc__option-card">
+                  <span class="calc__option-name">Комфорт</span>
+                  <span class="calc__option-price">от 5 200 ₽ / ночь</span>
+                </span>
+              </label>
+
+              <label class="calc__option">
+                <input type="radio" name="room-type" value="lux" data-price="8900">
+                <span class="calc__option-card">
+                  <span class="calc__option-name">Люкс</span>
+                  <span class="calc__option-price">от 8 900 ₽ / ночь</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Блок вывода итоговой цены (заполняется JS) -->
+          <output class="calc__total" id="calc-total"
+                  for="check-in check-out guests" aria-live="polite">
+            <span class="calc__total-label">Итоговая цена:</span>
+            <span class="calc__total-value" id="calc-total-value">—</span>
+            <span class="calc__total-hint text-xs" id="calc-total-hint">
+              Выберите даты пребывания — и здесь появится расчёт.
+            </span>
+          </output>
+
+          <button class="calc__submit" type="submit">Рассчитать стоимость</button>
+        </form>
+
+      </div>
+    </section>
+    <!-- ══════════ /БЛОК КАЛЬКУЛЯТОРА ══════════ -->
+  </main>
+
+  <footer class="section section--dark">
+    <div class="container">
+        <!-- Сетка для двух колонок (адаптивная) -->
+        <div class="grid-auto">
+            
+            <!-- Блок с информацией -->
+            <div class="flex flex-col">
+                <h3>Grand Horizon Hotel</h3>
+                <p>📍 г. Сочи, ул. Приморская, д. 15</p>
+                <p>📞 <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+                <p>✉️ <a href="mailto:info@grandhorizon.ru">info@grandhorizon.ru</a></p>
+            </div>
+
+            <!-- Блок с соцсетями -->
+            <div class="flex flex-col">
+                <h4>Мы в соцсетях:</h4>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#">ВКонтакте</a>
+                    <a href="#">Telegram</a>
+                    <a href="#">WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Копирайт -->
+        <div class="mt-6 text-center text-sm">
+            <p>&copy; 2026 Grand Horizon Hotel. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+  <!-- ══════════ Подвал сайта подключается здесь ══════════ -->
+
 </body>
+</html>
