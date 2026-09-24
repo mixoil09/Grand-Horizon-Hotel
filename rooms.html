@@ -15,6 +15,7 @@
 <body>
 
   <!-- ══════════ Шапка сайта подключается здесь ══════════ -->
+
 <header class="section--soft">
         <div class="container flex-between" style="padding-block: var(--space-4);">
             <a href="index.html" style="font-weight: var(--fw-bold); font-size: var(--fs-lg);">Grand Horizon</a>
@@ -25,6 +26,20 @@
             </nav>
         </div>
     </header>
+  <main>
+    <!-- ══════════ БЛОК КАЛЬКУЛЯТОРА ══════════ -->
+    <section class="section section--soft" id="calc" aria-labelledby="calc-title">
+      <div class="container">
+
+        <div class="section-header">
+          <h2 class="section-header__title" id="calc-title">Калькулятор стоимости проживания</h2>
+          <p class="section-header__subtitle">
+            Укажите даты заезда и выезда, количество гостей и тип номера —
+            итоговая цена появится в блоке ниже.
+          </p>
+        </div>
+
+
   <main>
     <!-- ══════════ БЛОК КАЛЬКУЛЯТОРА ══════════ -->
     <section class="section section--soft" id="calc" aria-labelledby="calc-title">
@@ -54,8 +69,7 @@
 
             <div class="calc__field">
               <label class="calc__label" for="guests">Количество гостей</label>
-              <input class="calc__input" type="number" id="guests" name="guests"
-                     min="1" max="6" step="1" value="2" required>
+              <input class="calc__input" type="number" id="guests" name="guests" min="1" max="6" step="1" value="2" required>
             </div>
           </div>
 
@@ -108,6 +122,7 @@
     <!-- ══════════ /БЛОК КАЛЬКУЛЯТОРА ══════════ -->
   </main>
 
+
   <footer class="section section--dark">
     <div class="container">
         <!-- Сетка для двух колонок (адаптивная) -->
@@ -139,6 +154,11 @@
         </div>
     </div>
 </footer>
+  <!-- ══════════ Подвал сайта подключается здесь ══════════ -->
+
+</body>
+</html>
+=======
   <!-- ══════════ Подвал сайта подключается здесь ══════════ -->
 
 </body>
