@@ -1,135 +1,123 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-    const checkInInput = document.getElementById('checkIn');
-    const checkOutInput = document.getElementById('checkOut');
-    const roomTypeSelect = document.getElementById('roomType');
-    const resultBlock = document.getElementById('result');
-    const bookBtn = document.getElementById('bookBtn');
+    // --- Ссылки на элементы ---
+    const form         = document.getElementById('booking-calc');
+    const checkInInput = document.getElementById('check-in');
+    const checkOutInput= document.getElementById('check-out');
+    const guestsInput  = document.getElementById('guests');
+    const totalValue   = document.getElementById('calc-total-value');
+    const totalHint    = document.getElementById('calc-total-hint');
+    const roomRadios   = document.querySelectorAll('input[name="room-type"]');
 
-    const BASE_PRICE = 3000;
-    let currentCalculation = null;
+    // Если калькулятора нет на странице — тихо выходим
+    if (!form || !checkInInput || !checkOutInput || !totalValue) return;
 
-    const today = new Date().toISOString().split('T')[0];
-    checkInInput.min = today;
+    // --- Утилиты ---
+    const MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    /** Приводит дату к строке YYYY-MM-DD (для input[type="date"]) */
+    const toISODate = (date) => {
+        const tzOffset = date.getTimezoneOffset() * 60000;
+        return new Date(date.getTime() - tzOffset).toISOString().split('T')[0];
+    };
+
+    /** Разница в ночах между двумя строками дат */
+    const nightsBetween = (inStr, outStr) => {
+        const dIn  = new Date(inStr);
+        const dOut = new Date(outStr);
+        return Math.round((dOut - dIn) / MS_PER_DAY);
+    };
+
+    /** Форматирование цены в рублях */
+    const formatPrice = (value) =>
+        value.toLocaleString('ru-RU') + ' ₽';
+
+    /** Получить выбранный radio (тип номера) */
+    const getSelectedRoom = () => {
+        return [...roomRadios].find(r => r.checked) || null;
+    };
+
+    /** Показать сообщение в блоке итога */
+    const setTotalMessage = (value, hint) => {
+        totalValue.textContent = value;
+        if (totalHint) totalHint.textContent = hint;
+    };
+
+    // --- Ограничения дат ---
+    const today = toISODate(new Date());
+    checkInInput.min  = today;
     checkOutInput.min = today;
 
+    // --- Основная функция расчёта ---
     function calculateTotal() {
-        const checkInValue = checkInInput.value;
-        const checkOutValue = checkOutInput.value;
-        const coefficient = parseFloat(roomTypeSelect.value);
-        const roomName = roomTypeSelect.options[roomTypeSelect.selectedIndex].text.split(' (')[0];
+        const checkIn  = checkInInput.value;
+        const checkOut = checkOutInput.value;
+        const room     = getSelectedRoom();
 
-        if (!checkInValue || !checkOutValue) {
-            resultBlock.textContent = 'Выберите даты для расчёта';
-            bookBtn.disabled = true;
-            currentCalculation = null;
+        // 1. Не выбраны даты
+        if (!checkIn || !checkOut) {
+            setTotalMessage('—', 'Выберите даты пребывания — и здесь появится расчёт.');
             return;
         }
 
-        const dateIn = new Date(checkInValue);
-        const dateOut = new Date(checkOutValue);
-
-        if (dateOut <= dateIn) {
-            resultBlock.innerHTML = '⚠️ Дата выезда должна быть позже заезда';
-            bookBtn.disabled = true;
-            currentCalculation = null;
+        // 2. Дата выезда не позже заезда
+        const nights = nightsBetween(checkIn, checkOut);
+        if (nights <= 0) {
+            setTotalMessage('—', '⚠️ Дата выезда должна быть позже даты заезда.');
             return;
         }
 
-        const diffTime = Math.abs(dateOut - dateIn);
-        const nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        const totalCost = BASE_PRICE * nights * coefficient;
+        // 3. Не выбран тип номера
+        if (!room) {
+            setTotalMessage('—', 'Выберите тип номера.');
+            return;
+        }
 
-        resultBlock.innerHTML = `
-            ${totalCost.toLocaleString('ru-RU')} ₽
-            <small>${nights} ноч. × ${BASE_PRICE} ₽ × коэф. ${coefficient}</small>
-        `;
+        // 4. Гости (по ТЗ — просто валидация; можно расширить логику)
+        const guests = parseInt(guestsInput.value, 10) || 1;
 
-        bookBtn.disabled = false;
-        currentCalculation = {
-            nights, totalCost, coefficient, roomName,
-            checkIn: checkInValue, checkOut: checkOutValue
-        };
+        // 5. Считаем
+        const pricePerNight = parseFloat(room.dataset.price) || 0;
+        const roomName      = room.value; // standard | comfort | lux
+        const total         = pricePerNight * nights;
+
+        // 6. Выводим
+        setTotalMessage(
+            formatPrice(total),
+            `${nights} ноч. × ${formatPrice(pricePerNight)} · ${roomName} · гостей: ${guests}`
+        );
     }
 
-    checkInInput.addEventListener('input', () => {
-        if (checkInInput.value) {
-            const nextDay = new Date(checkInInput.value);
-            nextDay.setDate(nextDay.getDate() + 1);
-            checkOutInput.min = nextDay.toISOString().split('T')[0];
-            if (checkOutInput.value && checkOutInput.value <= checkInInput.value) {
-                checkOutInput.value = nextDay.toISOString().split('T')[0];
-            }
+    // --- Автокоррекция даты выезда ---
+    checkInInput.addEventListener('change', () => {
+        if (!checkInInput.value) return;
+
+        // Минимум для выезда — следующий день после заезда
+        const nextDay = new Date(checkInInput.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkOutInput.min = toISODate(nextDay);
+
+        // Если выезд <= заезда — сдвигаем выезд на день вперёд
+        if (checkOutInput.value && checkOutInput.value <= checkInInput.value) {
+            checkOutInput.value = toISODate(nextDay);
         }
+
         calculateTotal();
     });
 
-    checkOutInput.addEventListener('input', calculateTotal);
-    roomTypeSelect.addEventListener('change', calculateTotal);
+    // --- Реакция на изменения ---
+    checkOutInput.addEventListener('change', calculateTotal);
+    guestsInput.addEventListener('input',  calculateTotal);
 
-    bookBtn.addEventListener('click', () => {
-        if (!currentCalculation) return;
-        const { nights, totalCost, roomName, checkIn, checkOut } = currentCalculation;
-
-        document.getElementById('modalDetails').innerHTML = `
-            <div><span>Номер</span><span>${roomName}</span></div>
-            <div><span>Заезд</span><span>${formatDate(checkIn)}</span></div>
-            <div><span>Выезд</span><span>${formatDate(checkOut)}</span></div>
-            <div><span>Ночей</span><span>${nights}</span></div>
-            <div><span>Итого</span><span>${totalCost.toLocaleString('ru-RU')} ₽</span></div>
-        `;
-
-        document.getElementById('modal').classList.add('active');
+    roomRadios.forEach(radio => {
+        radio.addEventListener('change', calculateTotal);
     });
-});
 
-function scrollToId(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-}
+    // --- Пересчёт при отправке формы (защита от Enter) ---
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        calculateTotal();
+    });
 
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function formatDate(str) {
-    const d = new Date(str);
-    return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
-}
-
-function closeModal() {
-    document.getElementById('modal').classList.remove('active');
-    showToast('Спасибо за бронирование! 🎉');
-}
-
-function showToast(message) {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
-}
-
-function selectRoom(coefficient, roomName) {
-    const roomSelect = document.getElementById('roomType');
-    roomSelect.value = coefficient;
-
-    const checkIn = document.getElementById('checkIn');
-    const checkOut = document.getElementById('checkOut');
-
-    if (!checkIn.value) {
-        const today = new Date();
-        const tomorrow = new Date(today);
-        tomorrow.setDate(tomorrow.getDate() + 1);
-
-        checkIn.value = today.toISOString().split('T')[0];
-        checkOut.value = tomorrow.toISOString().split('T')[0];
-        checkOut.min = tomorrow.toISOString().split('T')[0];
-    }
-
-    checkIn.dispatchEvent(new Event('input'));
-    scrollToId('booking');
-    showToast(`Выбран номер: ${roomName}`);
-}
-
-document.getElementById('modal').addEventListener('click', (e) => {
-    if (e.target.id === 'modal') closeModal();
+    // --- Первичный расчёт (если поля уже заполнены) ---
+    calculateTotal();
 });
