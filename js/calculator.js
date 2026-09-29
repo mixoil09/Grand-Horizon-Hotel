@@ -1,4 +1,98 @@
+/* ============================================================
+   js/calculator.js
+   Калькулятор стоимости проживания для rooms.html
+   Работает со стилями из css/main.css и css/components/forms.css
+   ============================================================ */
+
 document.addEventListener('DOMContentLoaded', () => {
+    const form          = document.getElementById('booking-calc');
+    const checkInInput  = document.getElementById('check-in');
+    const checkOutInput = document.getElementById('check-out');
+    const guestsInput   = document.getElementById('guests');
+    const totalValue    = document.getElementById('calc-total-value');
+    const totalHint     = document.getElementById('calc-total-hint');
+    const roomRadios    = document.querySelectorAll('input[name="room-type"]');
+
+    if (!form || !checkInInput || !checkOutInput || !totalValue) return;
+
+    const MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    const toISODate = (date) => {
+        const tz = date.getTimezoneOffset() * 60000;
+        return new Date(date.getTime() - tz).toISOString().split('T')[0];
+    };
+
+    const nightsBetween = (a, b) =>
+        Math.round((new Date(b) - new Date(a)) / MS_PER_DAY);
+
+    const formatPrice = (v) => v.toLocaleString('ru-RU') + ' ₽';
+
+    const getSelectedRoom = () =>
+        [...roomRadios].find(r => r.checked) || null;
+
+    const setTotal = (value, hint) => {
+        totalValue.textContent = value;
+        if (totalHint) totalHint.textContent = hint;
+    };
+
+    const today = toISODate(new Date());
+    checkInInput.min  = today;
+    checkOutInput.min = today;
+
+    function calculateTotal() {
+        const checkIn  = checkInInput.value;
+        const checkOut = checkOutInput.value;
+        const room     = getSelectedRoom();
+
+        if (!checkIn || !checkOut) {
+            setTotal('—', 'Выберите даты пребывания — и здесь появится расчёт.');
+            return;
+        }
+
+        const nights = nightsBetween(checkIn, checkOut);
+        if (nights <= 0) {
+            setTotal('—', '⚠️ Дата выезда должна быть позже даты заезда.');
+            return;
+        }
+
+        if (!room) {
+            setTotal('—', 'Выберите тип номера.');
+            return;
+        }
+
+        const guests        = parseInt(guestsInput.value, 10) || 1;
+        const pricePerNight = parseFloat(room.dataset.price) || 0;
+        const total         = pricePerNight * nights;
+        const roomName      = room.value;
+
+        setTotal(
+            formatPrice(total),
+            `${nights} ноч. × ${formatPrice(pricePerNight)} · ${roomName} · гостей: ${guests}`
+        );
+    }
+
+    checkInInput.addEventListener('change', () => {
+        if (!checkInInput.value) return;
+        const next = new Date(checkInInput.value);
+        next.setDate(next.getDate() + 1);
+        checkOutInput.min = toISODate(next);
+        if (checkOutInput.value && checkOutInput.value <= checkInInput.value) {
+            checkOutInput.value = toISODate(next);
+        }
+        calculateTotal();
+    });
+
+    checkOutInput.addEventListener('change', calculateTotal);
+    guestsInput.addEventListener('input', calculateTotal);
+    roomRadios.forEach(r => r.addEventListener('change', calculateTotal));
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        calculateTotal();
+    });
+
+    calculateTotal();
+});document.addEventListener('DOMContentLoaded', () => {
     // --- Ссылки на элементы ---
     const form         = document.getElementById('booking-calc');
     const checkInInput = document.getElementById('check-in');
